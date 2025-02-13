@@ -1,7 +1,7 @@
 import * as React from "react";
 import { MDXContent } from "@content-collections/mdx/react";
 import Link from "next/link";
-import { allBlogPosts, allChangelogPosts } from "content-collections";
+import { allChangelogPosts } from "content-collections";
 import { ListChecks } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn, formatDate } from "@/lib/utils";
@@ -215,16 +215,14 @@ const components = {
   CopyBox,
   Changelog: (props: any) => (
     <ul className="not-prose grid list-none rounded-xl border border-border bg-card p-4">
-      {[...allBlogPosts, ...allChangelogPosts]
+      {[...allChangelogPosts]
         .filter((post) => post.publishedAt <= props.before)
         .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
         .slice(0, props.count)
         .map((post: any) => (
           <li key={post.slug}>
             <Link
-              href={`/${post.type === "BlogPost" ? "blog" : "changelog"}/${
-                post.slug
-              }`}
+              href={`/changelog/${post.slug}`}
               className="group flex items-center justify-between rounded-lg px-2 py-3 transition-colors hover:bg-muted active:bg-muted/80 sm:px-4"
             >
               <div>

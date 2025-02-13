@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 import { headers } from "next/headers";
-import { allBlogPosts, allDocsPosts } from "content-collections";
+import { allDocsPosts } from "content-collections";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const headersList = headers();

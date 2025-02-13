@@ -238,5 +238,5 @@ export const LegalPost = defineCollection({
 });
 
 export default defineConfig({
-  collections: [BlogPost, ChangelogPost, DocsPost, LegalPost],
+  collections: [ChangelogPost, DocsPost, LegalPost],
 });

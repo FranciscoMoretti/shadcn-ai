@@ -1,4 +1,3 @@
-import MaxWidthWrapper from "@/components/blog/max-width-wrapper";
 import { allDocsPosts } from "content-collections";
 import { notFound } from "next/navigation";
 import Link from "next/link";

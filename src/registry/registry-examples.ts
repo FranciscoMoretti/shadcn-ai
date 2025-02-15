@@ -110,6 +110,8 @@ import PricingBasic, {
 import TimelineBasic from "./example/timeline-basic";
 import TimelineModern from "./example/timeline-modern";
 import TimelineMinimal from "./example/timeline-minimal";
+import ChatInputBasic, { demoSource as ChatInputBasicSource } from "./example/chat-input-basic";
+import ChatInputDemo, { demoSource as ChatInputDemoSource } from "./example/chat-input-demo";
 
 export const examples: RegistryItem[] = [
   {
@@ -417,5 +419,28 @@ export const examples: RegistryItem[] = [
     name: "timeline-minimal",
     type: "examples",
     component: TimelineMinimal,
+  },
+  {
+    name: "chat-input-basic",
+    type: "examples",
+    component: ChatInputBasic,
+    code: ChatInputBasicSource,
+    dependencies: [
+      "@/components/prismui/chat-input",
+      "@/components/ui/button",
+      "lucide-react"
+    ],
+  },
+  {
+    name: "chat-input-demo",
+    type: "examples",
+    component: ChatInputDemo,
+    code: ChatInputDemoSource,
+    dependencies: [
+      "@/components/prismui/chat-input",
+      "@/components/ui/button",
+      "@/components/ui/card",
+      "lucide-react"
+    ],
   },
 ];

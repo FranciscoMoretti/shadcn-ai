@@ -203,5 +203,16 @@ export const Index: Record<string, any> = {
       subcategory: "display",
       chunks: []
     },
+    "chat-input": {
+      name: "chat-input",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: ["src/components/prismui/chat-input.tsx"],
+      component: React.lazy(() => import("@/components/prismui/chat-input.tsx")),
+      source: "",
+      category: "components",
+      subcategory: "form",
+      chunks: []
+    },
   },
 }

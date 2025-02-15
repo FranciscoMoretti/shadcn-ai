@@ -1,0 +1,166 @@
+---
+title: Chat Input
+publishedAt: 2025-01-02
+summary: A modern, composable chat input component with support for loading states, submit actions, and customizable styling.
+author: codehagen
+slug: components/chat-input
+related: ["introduction"]
+---
+
+<ComponentPreview name="chat-input-basic" />
+
+<Note variant="info">
+  The Chat Input component provides a flexible and modern input field with built-in submit functionality, loading states, and customizable actions. Perfect for chat interfaces, comment sections, or any form of user input that requires immediate action.
+</Note>
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+    <ComponentSource name="chat-input" isCli />
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="chat-input" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Examples
+
+<ComponentPreview name="chat-input-demo" />
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import { ChatInput, ChatInputField, ChatInputActions } from "@/components/prismui/chat-input"
+import { Button } from "@/components/ui/button"
+import { SendIcon } from "lucide-react"
+
+export default function Example() {
+  const [value, setValue] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleSubmit = () => {
+    setIsLoading(true)
+    // Your submit logic here
+    setIsLoading(false)
+  }
+
+  return (
+    <ChatInput>
+      <ChatInputField
+        value={value}
+        onChange={setValue}
+        onSubmit={handleSubmit}
+        isLoading={isLoading}
+      />
+      <ChatInputActions>
+        <Button
+          size="icon"
+          className="rounded-full"
+          disabled={!value || isLoading}
+          onClick={handleSubmit}
+        >
+          {isLoading ? "..." : <SendIcon className="h-4 w-4" />}
+        </Button>
+      </ChatInputActions>
+    </ChatInput>
+  )
+}
+```
+
+## Customization
+
+<Steps>
+  <Step>Custom Styling</Step>
+  ```tsx
+  <ChatInput className="border-2 border-primary">
+    <ChatInputField 
+      className="text-lg font-medium"
+      placeholder="Custom placeholder..."
+    />
+    <ChatInputActions>
+      <Button variant="ghost">Cancel</Button>
+      <Button>Send</Button>
+    </ChatInputActions>
+  </ChatInput>
+  ```
+
+  <Step>Custom Actions</Step>
+  ```tsx
+  <ChatInputActions>
+    <Button variant="ghost" size="icon">
+      <PaperclipIcon className="h-4 w-4" />
+    </Button>
+    <Button variant="ghost" size="icon">
+      <SmileIcon className="h-4 w-4" />
+    </Button>
+    <Button size="icon">
+      <SendIcon className="h-4 w-4" />
+    </Button>
+  </ChatInputActions>
+  ```
+</Steps>
+
+## Notes
+
+- Built with composable components for flexibility
+- Supports keyboard shortcuts (Enter to submit)
+- Loading state handling
+- Mobile-responsive design
+- TypeScript support with proper types
+- Customizable styling with Tailwind CSS
+- Accessible with proper ARIA attributes
+
+## Features
+
+- Composable architecture
+- Enter key submission
+- Loading state support
+- Custom action buttons
+- Mobile-friendly design
+- Keyboard shortcuts
+- Customizable styling
+- Accessibility features
+
+## Props
+
+### ChatInputProps
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| className | string | - | Additional CSS classes for the root container |
+| children | ReactNode | - | Child components (ChatInputField and ChatInputActions) |
+
+### ChatInputFieldProps
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | string | - | The current value of the input field |
+| onChange | (value: string) => void | - | Callback when input value changes |
+| onSubmit | () => void | - | Optional callback when submit is triggered |
+| isLoading | boolean | false | Whether the input is in a loading state |
+| className | string | - | Additional CSS classes for the input field |
+
+### ChatInputActionsProps
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| className | string | - | Additional CSS classes for the actions container |
+| children | ReactNode | - | Action buttons or other components |
+
+### ChatInputLegacyProps
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | string | - | The current value of the input field |
+| onChange | (value: string) => void | - | Callback when input value changes |
+| onSubmit | () => void | - | Optional callback when submit is triggered |
+| isLoading | boolean | false | Whether the input is in a loading state |
+| className | string | - | Additional CSS classes for the root container |
+| inputClassName | string | - | Additional CSS classes for the input field |

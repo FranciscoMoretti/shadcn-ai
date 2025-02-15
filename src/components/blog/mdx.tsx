@@ -14,7 +14,6 @@ import { ComponentSource } from "@/components/component-source";
 import { Note } from "@/components/ui/note";
 import { SectionPreview } from "@/components/section-preview";
 import { MdxCodeBlock } from "@/components/mdx-code-block";
-import { ComponentPreviewNotRegistry } from "@/components/component-preview-not-registry";
 import { DownloadButton } from "@/components/download-button";
 
 const CustomLink = (props: any) => {
@@ -298,7 +297,6 @@ const components = {
   ),
   ComponentPreview,
   ComponentSource,
-  ComponentPreviewNotRegistry,
   MdxCodeBlock,
   Note,
   SectionPreview,

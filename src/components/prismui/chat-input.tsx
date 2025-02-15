@@ -1,7 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { SendIcon } from "lucide-react";
 import * as React from "react";
 
 interface ChatInputProps {

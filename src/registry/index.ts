@@ -5,7 +5,6 @@
  *
  * Available Registries:
  * - components: UI components (buttons, inputs, etc.)
- * - sections: Larger page sections (hero, features, etc.)
  * - examples: Example implementations
  * - blocks: Composite components
  * - themes: Theme configurations
@@ -19,7 +18,6 @@
  */
 
 import { examples } from "./registry-examples";
-import { sections } from "./registry-sections";
 import { blocks } from "./registry-blocks";
 import { themes } from "./registry-themes";
 import { components } from "./registry-components";
@@ -31,7 +29,6 @@ import { type Registry } from "./schema";
 
 export const registry: Registry = [
   ...examples,
-  ...sections,
   ...blocks,
   ...themes,
   ...components,

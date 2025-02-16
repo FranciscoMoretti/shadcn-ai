@@ -14,7 +14,6 @@ import { ComponentSource } from "@/components/component-source";
 import { Note } from "@/components/ui/note";
 import { SectionPreview } from "@/components/section-preview";
 import { MdxCodeBlock } from "@/components/mdx-code-block";
-import { DownloadButton } from "@/components/download-button";
 
 const CustomLink = (props: any) => {
   const href = props.href;
@@ -300,7 +299,6 @@ const components = {
   MdxCodeBlock,
   Note,
   SectionPreview,
-  DownloadButton,
 };
 
 interface MDXProps {

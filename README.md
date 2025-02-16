@@ -62,3 +62,24 @@ We welcome contributions! Here's how you can help:
 ## License
 
 Licensed under the [MIT license](https://github.com/Codehagen/Prismui/blob/main/LICENSE.md).
+
+
+## Create your own component repository
+### Configure the site
+
+1. Update `src/lib/config.tsx`
+2. Change the `logo` at `src/components/icons.tsx`
+3. Update the og image at `public/og.png` and `public/og_static.png`
+4. Update the favicon at `public/favicon.ico`
+
+### Create your components
+
+1. Create your component following shadcn/ui's principles
+2. Add it to the registry at `src/registry/registry-components.ts`
+3. Add examples at `src/registry/registry-examples.ts`
+4. Build the registry with `pnpm build:registry`
+5. Create a page for the component at `src/app/components/[component-name].tsx`
+6. Add the component to the navigation at `src/config/docs.ts`
+7. Repeat 1-6 for each component
+
+

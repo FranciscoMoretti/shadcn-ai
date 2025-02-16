@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Shadcn AI",
-  description: "AI Components with Shadcn UI",
+  description: "Shadcn UI components for AI",
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   keywords: ["Shadcn UI", "AI", "Next.js", "React", "Tailwind CSS"],
   links: {

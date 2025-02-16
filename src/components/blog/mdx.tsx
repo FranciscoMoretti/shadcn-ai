@@ -1,7 +1,6 @@
 import * as React from "react";
 import { MDXContent } from "@content-collections/mdx/react";
 import Link from "next/link";
-import { allChangelogPosts } from "content-collections";
 import { ListChecks } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn, formatDate } from "@/lib/utils";
@@ -211,35 +210,6 @@ const components = {
     </div>
   ),
   CopyBox,
-  Changelog: (props: any) => (
-    <ul className="not-prose grid list-none rounded-xl border border-border bg-card p-4">
-      {[...allChangelogPosts]
-        .filter((post) => post.publishedAt <= props.before)
-        .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
-        .slice(0, props.count)
-        .map((post: any) => (
-          <li key={post.slug}>
-            <Link
-              href={`/changelog/${post.slug}`}
-              className="group flex items-center justify-between rounded-lg px-2 py-3 transition-colors hover:bg-muted active:bg-muted/80 sm:px-4"
-            >
-              <div>
-                <p className="text-xs font-medium text-muted-foreground group-hover:text-foreground">
-                  {formatDate(post.publishedAt)}
-                </p>
-                <h3 className="my-px text-base font-medium text-foreground group-hover:text-foreground">
-                  {post.title}
-                </h3>
-                <p className="line-clamp-1 text-sm text-muted-foreground group-hover:text-foreground">
-                  {post.summary}
-                </p>
-              </div>
-              <ExpandingArrow className="-ml-4 h-4 w-4 text-muted-foreground group-hover:text-foreground" />
-            </Link>
-          </li>
-        ))}
-    </ul>
-  ),
   Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn(

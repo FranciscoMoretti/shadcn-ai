@@ -32,7 +32,7 @@ const prettyCodeOptions: Options = {
   },
 };
 
-const computedFields = (type: "changelog" | "docs" | "legal") => ({
+const computedFields = (type:  "docs" | "legal") => ({
   slug: (document) => {
     const slugger = new GithubSlugger();
     return document.slug || slugger.slug(document.title);
@@ -74,60 +74,6 @@ const computedFields = (type: "changelog" | "docs" | "legal") => ({
   },
 });
 
-const ChangelogPost = defineCollection({
-  name: "ChangelogPost",
-  directory: "src/content/changelog",
-  include: "*.mdx",
-  schema: (z) => ({
-    title: z.string(),
-    publishedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-    summary: z.string(),
-    image: z.string(),
-    author: z.string(),
-    slug: z.string().optional(),
-  }),
-  transform: async (document, context) => {
-    try {
-      const mdx = await compileMDX(context, document, {
-        rehypePlugins: [
-          rehypeSlug,
-          [rehypePrettyCode, prettyCodeOptions],
-          [
-            rehypeAutolinkHeadings,
-            {
-              properties: {
-                className: ["subheading-anchor"],
-                ariaLabel: "Link to section",
-              },
-            },
-          ],
-        ],
-        remarkPlugins: [remarkGfm],
-      });
-      console.log("MDX compilation successful for:", document.title);
-      const computed = computedFields("changelog");
-      return {
-        ...document,
-        slug: computed.slug(document),
-        mdx,
-        tableOfContents: computed.tableOfContents({
-          ...document,
-          body: { raw: mdx.raw },
-        }),
-        images: computed.images({ ...document, body: { raw: mdx.raw } }),
-        tweetIds: computed.tweetIds({ ...document, body: { raw: mdx.raw } }),
-        githubRepos: computed.githubRepos({
-          ...document,
-          body: { raw: mdx.raw },
-        }),
-      };
-    } catch (error) {
-      console.error("Error compiling MDX for:", document.title, error);
-      console.error("Error details:", error.stack);
-      throw error;
-    }
-  },
-});
 
 export const DocsPost = defineCollection({
   name: "DocsPost",
@@ -238,5 +184,5 @@ export const LegalPost = defineCollection({
 });
 
 export default defineConfig({
-  collections: [ChangelogPost, DocsPost, LegalPost],
+  collections: [DocsPost, LegalPost],
 });

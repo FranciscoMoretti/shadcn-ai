@@ -9,7 +9,7 @@ export const siteConfig = {
     email: "support@prism.ui",
     twitter: "https://twitter.com/prismui",
     discord: "https://discord.gg/",
-    github: "https://github.com/prismui",
+    github: "https://github.com/FranciscoMoretti/shadcn-ai",
     instagram: "https://instagram.com/prismui/",
   },
   header: [

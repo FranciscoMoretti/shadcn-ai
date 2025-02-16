@@ -1,36 +1,15 @@
 "use client";
 
-import Drawer from "@/components/drawer";
 import { Icons } from "@/components/icons";
 import Menu from "@/components/menu";
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { DocsSidebar } from "../docs-sidebar";
-import { Github } from "lucide-react";
 
 export default function Header() {
-  const [addBorder, setAddBorder] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setAddBorder(true);
-      } else {
-        setAddBorder(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <header
       className={"sticky top-0 z-50 bg-background/60 backdrop-blur border-b"}
@@ -54,7 +33,7 @@ export default function Header() {
 
         <div className="flex items-center gap-2">
           <Link
-            href="https://github.com/FranciscoMoretti/shadcn-ai"
+            href={siteConfig.links.github}
             target="_blank"
             rel="noopener noreferrer"
             className={buttonVariants({
@@ -62,7 +41,7 @@ export default function Header() {
               size: "sm",
             })}
           >
-            <Github className="h-5 w-5" />
+            <Icons.github className="h-5 w-5" />
           </Link>
           <ThemeToggle />
           <div className="lg:hidden">

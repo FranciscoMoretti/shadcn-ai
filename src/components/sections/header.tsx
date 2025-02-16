@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { DocsSidebar } from "../docs-sidebar";
+import { Github } from "lucide-react";
 
 export default function Header() {
   const [addBorder, setAddBorder] = useState(false);
@@ -53,13 +54,15 @@ export default function Header() {
 
         <div className="flex items-center gap-2">
           <Link
-            href="/updates"
+            href="https://github.com/FranciscoMoretti/shadcn-ai"
+            target="_blank"
+            rel="noopener noreferrer"
             className={buttonVariants({
-              variant: "default",
+              variant: "ghost",
               size: "sm",
             })}
           >
-            Get Updates
+            <Github className="h-5 w-5" />
           </Link>
           <ThemeToggle />
           <div className="lg:hidden">
